@@ -29,4 +29,4 @@ var roleRefueller = {
     }
 };
 
-module.exports = roleHarvester;
+module.exports = roleRefueller;
