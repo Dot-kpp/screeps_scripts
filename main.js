@@ -5,6 +5,7 @@ var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleRepairer = require('role.repairer');
 var roleWallRepairer = require('role.wallRepairer');
+var roleRefueller = require('role.Refueller');
 
 module.exports.loop = function () {
     // check for memory entries of died creeps by iterating over Memory.creeps
@@ -41,6 +42,9 @@ module.exports.loop = function () {
         else if (creep.memory.role == 'wallRepairer') {
             roleWallRepairer.run(creep);
         }
+        else if (creep.memory.role == 'refueller') {
+            roleRefueller.run(creep);
+        }
     }
 
     var towers = Game.rooms.W25S17.find(FIND_STRUCTURES, {
@@ -56,10 +60,10 @@ module.exports.loop = function () {
     // setup some minimum numbers for different roles
     var minimumNumberOfHarvesters = 3;
     var minimumNumberOfUpgraders = 3;
-    var minimumNumberOfBuilders = 2;
-    var minimumNumberOfRepairers = 1;
+    var minimumNumberOfBuilders = 1;
+    var minimumNumberOfRepairers = 2;
     var minimumNumberOfWallRepairers = 1;
-    var minimumNumberOfRefueller = 1;
+    var minimumNumberOfRefueller = 2;
 
     // count the number of creeps alive for each role
     // _.sum will count the number of properties in Game.creeps filtered by the
